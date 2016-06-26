@@ -8,6 +8,7 @@ repositories {
 
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.21'
+    compile group: 'org.springframework', name: 'spring-core', version: '4.2.0.RELEASE'
     compile group: 'com.github.springtestdbunit', name: 'spring-test-dbunit', version: '1.3.0'
 	compile group: 'org.dbunit', name: 'dbunit', version: '2.4.9'
 	
@@ -15,3 +16,17 @@ dependencies {
     testCompile 'junit:junit:4.12'
 }
 
+sourceSets {
+	main{
+		java {
+			srcDir 'src/main/java'
+			srcDir 'src/main/resource'
+		}
+	}
+	test {
+		java {
+			srcDir 'src/test/java'
+			srcDir 'src/test/resource'
+		}
+	}
+}

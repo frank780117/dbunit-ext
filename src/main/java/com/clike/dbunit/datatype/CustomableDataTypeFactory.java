@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 
 public class CustomableDataTypeFactory extends DefaultDataTypeFactory {
 
-  private static final Logger logger = LoggerFactory.getLogger(CustomableDataTypeFactory.class);
+  private static final Logger logger = LoggerFactory.getLogger(CustomableDataTypeFactoryTest.class);
 
   private Map<String, DataType> customDataTypeMap = new HashMap<String, DataType>();
 

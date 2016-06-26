@@ -160,7 +160,7 @@ public class IntervalNowTimestampType extends AbstractDataType {
       return value1comp.compareTo(value2comp);
     }
   }
-
+  
   private FlagTimestamp makeFlagTimestamp(Timestamp timestamp) {
     if (timestamp == null) {
       throw new NullPointerException("timestamp is null");

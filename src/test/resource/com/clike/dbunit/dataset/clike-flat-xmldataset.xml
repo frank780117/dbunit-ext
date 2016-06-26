@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<Sample 
+	    nullValue="[null]"
+	    currentValue="[now]"
+	    futureValue="[future]"
+	    futureValue2="[future~]"
+	    futureValue3="[future~~]"
+	    pastValue="[past]"
+	    pastValue2="[past~]"
+	    pastValue3="[past~~]"
+	    optionValue="[future~~~]"
+	    />
+	    
+	<Sample 
+	    nullValue="[NULL]"
+	    currentValue="[NOW]"
+	    futureValue="[FUTURE]"
+	    futureValue2="[FUTURE~]"
+	    futureValue3="[FUTURE~~]"
+	    pastValue="[PAST]"
+	    pastValue2="[PAST~]"
+	    pastValue3="[PAST~~]"
+	    />
+</dataset>
