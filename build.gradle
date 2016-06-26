@@ -1,4 +1,5 @@
 apply plugin: 'java'
+apply plugin: "jacoco"
 apply plugin: 'eclipse'
 
 repositories {
@@ -20,13 +21,25 @@ sourceSets {
 	main{
 		java {
 			srcDir 'src/main/java'
-			srcDir 'src/main/resource'
+		}
+		resources {
+		   srcDir 'src/main/resource'
 		}
 	}
 	test {
 		java {
 			srcDir 'src/test/java'
-			srcDir 'src/test/resource'
+		}
+		resources {
+		   srcDir 'src/test/resource'
 		}
 	}
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled false
+        csv.enabled false
+        html.destination "${buildDir}/jacocoHtml"
+    }
 }
