@@ -1,10 +1,18 @@
-/bin/
-/.settings/
+# exclude eclipse setting
+
+bin/
+.settings/
 .project
 .classpath
 
-/gradle/
-/.gradle/
+*/bin/
+*/.settings/
+*/.project
+*/.classpath
+
+# exclude gradle build
+gradle/
+.gradle/
 gradlew
 gradlew.bat
-/build/
+build/
