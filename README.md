@@ -75,7 +75,7 @@ You can change by range by 'currentIntervalSecondLength' property, the 'now' ran
 your source code:
 ``` java
 @Transactional
-public changeName(long userId, String name) {
+public void changeName(long userId, String name) {
     User user = userRepository.find(userId);
     user.setName(name);
     user.setModifiedDate(new Date());
@@ -85,7 +85,7 @@ public changeName(long userId, String name) {
 your test code:
 ```
 @ExpectedDatabase("expectedData.xml")
-public testChangeName() {
+public void testChangeName() {
     target.createUser(123L);
     target.changeName(123L, "CLIKE");
 }
@@ -100,6 +100,65 @@ and you expected xml:
 	    name="CLIKE"
 	    modifiedDate="[now]" />
 
+</dataset>
+```
+
+# Generator
+
+The generator can generate xml value from table, you can give table and sql, then generate xml value.
+
+and you can use Modifier class to modify xml value.
+
+
+## basic example
+
+**first: you must use java.sql.DataSource in your application.**
+
+your code:
+``` java
+@Autowired
+DataSource dataSource;
+
+public void generate() {
+    FlatXmlDataSetGenerator generator = new FlatXmlDataSetGenerator(dataSource);
+    generator.addQueryData("CUSTOMER", "SELECT * FROM CUSTOMER WHERE LAST_NAME = 'CLIKE'");
+    generator.addQueryData("PHONE", "SELECT * FROM PHONE");
+    System.out.println(generator.generateString());
+}
+```
+
+then console output:
+``` xml
+<dataset>
+  <CUSTOMER RID="1" FIRST_NAME="FRANK" LAST_MODIFIED_DATE="2016-07-02 01:22:06.158" LAST_NAME="CLIKE"/>
+  <PHONE RID="1" PHONE_NUMBER="555-1234" COSTOMER_RID="1"/>
+  <PHONE RID="2" PHONE_NUMBER="02-3456" PHONE_TYPE="TAIWAN" COSTOMER_RID="1"/>
+</dataset>
+```
+
+## basic example (use modifier)
+
+**first: you must use java.sql.DataSource in your application.**
+
+your code:
+``` java
+@Autowired
+DataSource dataSource;
+
+public void generate() {
+    FlatXmlDataSetGenerator generator = new FlatXmlDataSetGenerator(dataSource, new NullValueModifier("NULL"));
+    generator.addQueryData("CUSTOMER", "SELECT * FROM CUSTOMER WHERE LAST_NAME = 'CLIKE'");
+    generator.addQueryData("PHONE", "SELECT * FROM PHONE");
+    generator.writeDataSetString(new File("/tmp/temp.xml"));
+}
+```
+
+then `/tmp/temp.xml` content:
+``` xml
+<dataset>
+  <CUSTOMER RID="1" FIRST_NAME="FRANK" LAST_MODIFIED_DATE="2016-07-02 01:22:06.158" LAST_NAME="CLIKE"/>
+  <PHONE RID="1" PHONE_NUMBER="555-1234" PHONE_TYPE="[NULL]" COSTOMER_RID="1"/>
+  <PHONE RID="2" PHONE_NUMBER="02-3456" PHONE_TYPE="TAIWAN" COSTOMER_RID="1"/>
 </dataset>
 ```
 
