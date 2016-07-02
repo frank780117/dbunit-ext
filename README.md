@@ -73,6 +73,7 @@ You can change by range by 'currentIntervalSecondLength' property, the 'now' ran
 **first: integration ClikeDataTypeFactory and ClikeFlatXmlDataSetLoader in your test**
 
 your source code:
+
 ``` java
 @Transactional
 public void changeName(long userId, String name) {
@@ -83,6 +84,7 @@ public void changeName(long userId, String name) {
 ```
 
 your test code:
+
 ```
 @ExpectedDatabase("expectedData.xml")
 public void testChangeName() {
@@ -92,6 +94,7 @@ public void testChangeName() {
 ```
 
 and you expected xml:
+
 ``` xml
 <?xml version="1.0" encoding="UTF-8"?>
 <dataset>
@@ -115,6 +118,7 @@ and you can use Modifier class to modify xml value.
 **first: you must use java.sql.DataSource in your application.**
 
 your code:
+
 ``` java
 @Autowired
 DataSource dataSource;
@@ -128,6 +132,7 @@ public void generate() {
 ```
 
 then console output:
+
 ``` xml
 <dataset>
   <CUSTOMER RID="1" FIRST_NAME="FRANK" LAST_MODIFIED_DATE="2016-07-02 01:22:06.158" LAST_NAME="CLIKE"/>
@@ -141,6 +146,7 @@ then console output:
 **first: you must use java.sql.DataSource in your application.**
 
 your code:
+
 ``` java
 @Autowired
 DataSource dataSource;
@@ -154,6 +160,7 @@ public void generate() {
 ```
 
 then `/tmp/temp.xml` content:
+
 ``` xml
 <dataset>
   <CUSTOMER RID="1" FIRST_NAME="FRANK" LAST_MODIFIED_DATE="2016-07-02 01:22:06.158" LAST_NAME="CLIKE"/>
