@@ -19,13 +19,13 @@ public class Customer {
   @Column(name = "RID")
   private long id;
 
-  @Column(name = "FIRST_NAME")
+  @Column(name = "FIRST_NAME", nullable = false)
   private String firstName;
 
-  @Column(name = "LAST_NAME")
+  @Column(name = "LAST_NAME", nullable = false)
   private String lastName;
-
-  @Column(name = "LAST_MODIFIED_DATE")
+  
+  @Column(name = "LAST_MODIFIED_DATE", nullable = false)
   private Date lastModifiedDate;
   
   @OneToMany(mappedBy="customer", cascade=CascadeType.ALL)

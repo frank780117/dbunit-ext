@@ -6,6 +6,8 @@ import org.dbunit.dataset.IDataSet;
 import org.dbunit.dataset.ReplacementDataSet;
 import org.springframework.core.io.Resource;
 
+import com.clike.dbunit.dataset.setup.SqlDefaultValueObject;
+
 public class ClikeFlatXmlDataSetLoader
     extends com.github.springtestdbunit.dataset.FlatXmlDataSetLoader {
 
@@ -26,10 +28,12 @@ public class ClikeFlatXmlDataSetLoader
 
     replacementDataSet.addReplacementObject("[" + nullKey + "]", null);
     replacementDataSet.addReplacementObject("[" + currentDateKey + "]", new Date(timeNow));
-    replacementDataSet.addReplacementObject("[" + futureDateKey + "]",
+    replacementDataSet.addReplacementObject("[setup:" + futureDateKey + "]",
         new Date(timeNow + timeRange));
-    replacementDataSet.addReplacementObject("[" + pastDateKey + "]", new Date(timeNow - timeRange));
+    replacementDataSet.addReplacementObject("[setup:" + pastDateKey + "]", new Date(timeNow - timeRange));
 
+    replacementDataSet.addReplacementObject("[setup:anyNotNullValue]", new SqlDefaultValueObject(""));
+    
     String dateFlowStr = "";
     for (int i = 1; i <= dateflowSize; i++) {
       dateFlowStr += "~";

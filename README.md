@@ -6,7 +6,7 @@ your testing don't need **mock new Date()** to compare orignal date and expected
 
 # Configuration
 
-## change datasetLoader
+## change datasetLoader & statementFactory
 
 you can modify datasetLoader to ClikeFlatXmlDataSetLoader in @DbUnitConfiguration
 
@@ -16,9 +16,20 @@ import com.clike.dbunit.dataset.ClikeFlatXmlDataSetLoader;
 @DbUnitConfiguration(dataSetLoader=ClikeFlatXmlDataSetLoader.class, databaseConnection={"dataSource", "dataSource2"})
 ```
 
+and you can change statementFactory to com.clike.dbunit.statement.PreparedStatementFactory in DatabaseConfigBean bean.
+
+``` xml
+<bean id="preparedStatementFactory" class="com.clike.dbunit.statement.PreparedStatementFactory" />
+
+<bean id="dbUnitDatabaseConfig" class="com.github.springtestdbunit.bean.DatabaseConfigBean">
+    <property name="skipOracleRecyclebinTables" value="true"/>
+    <property name="statementFactory" ref="preparedStatementFactory"/>
+</bean>
+```
+
 ## change datatypeFactory
 
-you can modify datatypeFactory to ClikeDataTypeFactory in DatabaseConfigBean bean
+you can change datatypeFactory to ClikeDataTypeFactory in DatabaseConfigBean bean
 
 ``` xml
 <bean id="clikeDataTypeFactory" class="com.clike.dbunit.datatype.ClikeDataTypeFactory">
@@ -33,28 +44,34 @@ you can modify datatypeFactory to ClikeDataTypeFactory in DatabaseConfigBean bea
 
 # feature
 
-## ClikeFlatXmlDataSetLoader
+## ClikeFlatXmlDataSetLoader & PreparedStatementFactory
 
-you can assign null value, current date, future date, and past date in data xml
+you can assign special value like null value, current date in data xml.
 
-| xml value       | replacement java Object|
-| ----------------|:----------------------:|
-| \[null\]        | null                   |
-| \[now\]         | new Date\(\)           |
-| \[past\]        | \[now\] - 35 days      |
-| \[future\]      | \[now\] + 35 days      |
+* all xml setting table
+
+    | xml value       | replacement java Object|
+    | ----------------|:----------------------:|
+    | \[null\]                  | null                   |
+    | \[now\]                   | new Date\(\)           |
+    | \[setup:past\]            | \[now\] - 35 days      |
+    | \[setup:future\]          | \[now\] + 35 days      |
+    | \[setup:anyNotNullValue\] | any not null value for any type | 
+
+    **If special xml value is start with 'setup', then the value should not to set expected data.**
 
 [past] and [future] can append '~' meaning the date distance farther than without '~',
 one '~' means 35 days, default the max '~' count is 2.
 
 | xml value     | replacement java Object|
 | ------------- |:----------------------:|
-| [past~]       | [now] - 70 days        |
-| [past~~]      | [now] - 105 days       |
-| [future~]     | [now] + 70 days        |
-| [future~~]    | [now] + 105 days       |
+| [setup:past~]       | [now] - 70 days        |
+| [setup:past~~]      | [now] - 105 days       |
+| [setup:future~]     | [now] + 70 days        |
+| [setup:future~~]    | [now] + 105 days       |
 
 you can change **dateflowSize** property to config '~' max count.
+
 
 ## ClikeDataTypeFactory
  

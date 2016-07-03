@@ -18,6 +18,10 @@ public class CustomService {
   @Autowired
   private CustomerRepository customerRepository;
   
+  public int countByLastName(String lastName) {
+    return customerRepository.findByLastName(lastName).size();
+  }
+  
   @Transactional
   public void addCustomerPhone(String lastName, String phoneNumber) {
     

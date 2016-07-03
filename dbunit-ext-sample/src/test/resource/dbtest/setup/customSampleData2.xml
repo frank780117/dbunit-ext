@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+	<CUSTOMER 
+	    RID="1" 
+	    FIRST_NAME="[setup:anyNotNullValue]" 
+	    LAST_NAME="CLIKE" 
+	    LAST_MODIFIED_DATE="[setup:past]"/>
+	    
+	<CUSTOMER 
+	    RID="2" 
+	    FIRST_NAME="[setup:anyNotNullValue]" 
+	    LAST_NAME="LIN" 
+	    LAST_MODIFIED_DATE="[setup:past]"/>
+</dataset>
