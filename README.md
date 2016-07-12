@@ -4,6 +4,25 @@ dbunit-ext provides [spring-test-dbunit] [spring-test-dbunit] extension function
 to set special value like 'null' or 'date'. You can use the project datatypeFactory to expected 'current date', 
 your testing don't need **mock new Date()** to compare orignal date and expected date.
 
+# Latest release
+
+To add a dependency on dbunit-ext using Maven, use the following:
+
+``` xml
+<dependency>
+  <groupId>com.clike</groupId>
+  <artifactId>dbunit-ext</artifactId>
+  <version>0.2.0</version>
+  <type>pom</type>
+</dependency>
+```
+
+To add a dependency using Gradle:
+
+```
+compile 'com.clike:dbunit-ext:0.2.0'
+```
+
 # Configuration
 
 ## change datasetLoader & statementFactory
