@@ -37,9 +37,9 @@ public class ClikeFlatXmlDataSetLoader
     String dateFlowStr = "";
     for (int i = 1; i <= dateflowSize; i++) {
       dateFlowStr += "~";
-      replacementDataSet.addReplacementObject("[" + futureDateKey + dateFlowStr + "]",
+      replacementDataSet.addReplacementObject("[setup:" + futureDateKey + dateFlowStr + "]",
           new Date(timeNow + timeRange * (i + 1)));
-      replacementDataSet.addReplacementObject("[" + pastDateKey + dateFlowStr + "]",
+      replacementDataSet.addReplacementObject("[setup:" + pastDateKey + dateFlowStr + "]",
           new Date(timeNow - timeRange * (i + 1)));
     }
 
