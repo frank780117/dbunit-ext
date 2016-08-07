@@ -3,23 +3,23 @@
 	<Sample 
 	    nullValue="[null]"
 	    currentValue="[now]"
-	    futureValue="[future]"
-	    futureValue2="[future~]"
-	    futureValue3="[future~~]"
-	    pastValue="[past]"
-	    pastValue2="[past~]"
-	    pastValue3="[past~~]"
-	    optionValue="[future~~~]"
+	    futureValue="[setup:future]"
+	    futureValue2="[setup:future~]"
+	    futureValue3="[setup:future~~]"
+	    pastValue="[setup:past]"
+	    pastValue2="[setup:past~]"
+	    pastValue3="[setup:past~~]"
+	    optionValue="[setup:future~~~]"
 	    />
 	    
 	<Sample 
 	    nullValue="[NULL]"
 	    currentValue="[NOW]"
-	    futureValue="[FUTURE]"
-	    futureValue2="[FUTURE~]"
-	    futureValue3="[FUTURE~~]"
-	    pastValue="[PAST]"
-	    pastValue2="[PAST~]"
-	    pastValue3="[PAST~~]"
+	    futureValue="[setup:FUTURE]"
+	    futureValue2="[setup:FUTURE~]"
+	    futureValue3="[setup:FUTURE~~]"
+	    pastValue="[setup:PAST]"
+	    pastValue2="[setup:PAST~]"
+	    pastValue3="[setup:PAST~~]"
 	    />
 </dataset>
